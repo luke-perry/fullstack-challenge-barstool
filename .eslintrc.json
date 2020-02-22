@@ -1,0 +1,30 @@
+{
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:jest/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "plugins": ["jest"],
+    "rules": {
+        "semi": [ 2, "never" ],
+        "max-len": [ "error", { "code": 125 } ],
+        "jest/no-identical-title": "error",
+        "jest/consistent-test-it": "warn",
+        "jest/expect-expect": "warn",
+        "jest/no-commented-out-tests": "error",
+        "jest/no-disabled-tests": "error",
+        "jest/no-empty-title": "error",
+        "jest/no-focused-tests": "error"
+    }
+}
