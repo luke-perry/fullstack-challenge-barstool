@@ -17,6 +17,7 @@
     },
     "plugins": ["jest"],
     "rules": {
+        "indent": ["error", 4],
         "semi": [ 2, "never" ],
         "max-len": [ "error", { "code": 125 } ],
         "jest/no-identical-title": "error",
@@ -24,7 +25,6 @@
         "jest/expect-expect": "warn",
         "jest/no-commented-out-tests": "error",
         "jest/no-disabled-tests": "error",
-        "jest/no-empty-title": "error",
         "jest/no-focused-tests": "error"
     }
 }
