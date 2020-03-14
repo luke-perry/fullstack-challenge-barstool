@@ -6,7 +6,7 @@ const router = require('./router')
 const logger = require('./utilties/logger')
 
 const app = express()
-const port = 3001
+const port = 30000
 
 app.use(cookieParser())
 app.use(morgan('dev'))
