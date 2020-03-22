@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb')
+const mongodb = require('mongodb')
 
 const logger = require('../utilties/logger')
 
@@ -7,7 +7,7 @@ const connectToDatastore = async () => {
     const connectionString = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_URL}:${MONGO_PORT}`
 
     try {
-        return MongoClient.connect(connectionString)
+        return await mongodb.MongoClient.connect(connectionString, { useUnifiedTopology: true })
     } catch (error) {
         logger.error(`[adapter-data-store | #connectToDatastore] - the following error occured connecting to the datastore: ${error}`)
         throw new Error(error)
@@ -30,7 +30,7 @@ const insertValueIntoDatastoreCollection = async (databaseName, collectionName, 
         await client.db(databaseName).collection(collectionName).insertOne(dataValue)
         await disconnectFromDatastore(client)
     } catch (error) {
-        logger.error(`[adapter-data-store | #insertValueIntoDatastoreCollection] - the following error occured inserting into the datastore client: ${error}`)
+        logger.error(`[adapter-data-store | #insertValueIntoDatastoreCollection] - the following error occured inserting a datastore value: ${error}`)
         await disconnectFromDatastore(client)
         throw new Error(error)
     }
@@ -38,13 +38,12 @@ const insertValueIntoDatastoreCollection = async (databaseName, collectionName, 
 
 const findValueInDatastoreCollection = async (databaseName, collectionName, query) => {
     const client = await connectToDatastore()
-
     try {
-        const searchResult = await client.db(databaseName).collection(collectionName).find(query)
+        const searchResult = await client.db(databaseName).collection(collectionName).findOne(query)
         await disconnectFromDatastore(client)
         return searchResult
     } catch (error) {
-        logger.error(`[adapter-data-store | #insertValueIntoDatastoreCollection] - the following error occured inserting into the datastore client: ${error}`)
+        logger.error(`[adapter-data-store | #insertValueIntoDatastoreCollection] - the following error occured finding a datastore value: ${error}`)
         await disconnectFromDatastore(client)
         throw new Error(error)
     }
@@ -57,7 +56,7 @@ const updateValueInDatastoreCollection = async (databaseName, collectionName, fi
         await client.db(databaseName).collection(collectionName).updateOne(filter, newDataValue)
         await disconnectFromDatastore(client)
     } catch (error) {
-        logger.error(`[adapter-data-store | #insertValueIntoDatastoreCollection] - the following error occured inserting into the datastore client: ${error}`)
+        logger.error(`[adapter-data-store | #insertValueIntoDatastoreCollection] - the following error occured updating a datastore value: ${error}`)
         await disconnectFromDatastore(client)
         throw new Error(error)
     }

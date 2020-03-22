@@ -1,12 +1,14 @@
 const express = require('express')
 
-const sampleController = require('./controllers/sampleController.js')
+const gameData = require('./controllers/game-data.js')
 
 const mainRouter = express.Router()
 
 const sampleResourceRouter = express.Router()
-mainRouter.use('/sample', sampleResourceRouter)
+mainRouter.use('/games/data', sampleResourceRouter)
 
-sampleResourceRouter.get('/hello', sampleController.hello)
+sampleResourceRouter.get('/:gameId/details', gameData.getGameDetails)
+sampleResourceRouter.get('/:gameId/boxscore', gameData.getGameBoxScore)
+sampleResourceRouter.get('/:gameId', gameData.getGameFullData)
 
 module.exports = mainRouter

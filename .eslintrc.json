@@ -20,6 +20,8 @@
         "indent": ["error", 4],
         "semi": [ 2, "never" ],
         "max-len": [ "error", { "code": 175 } ],
+        "object-curly-newline": "off",
+        "no-underscore-dangle":"off",
         "jest/no-identical-title": "error",
         "jest/consistent-test-it": "warn",
         "jest/expect-expect": "warn",
