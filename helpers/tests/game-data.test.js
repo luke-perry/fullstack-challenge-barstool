@@ -14,14 +14,14 @@ describe('game-data-helper', () => {
             const now = new Date()
             jest.spyOn(Date, 'now').mockReturnValue(now)
 
-            jest.spyOn(mongodb, 'ObjectId').mockReturnValueOnce({ getTimestamp: () => new Date(now - 60000) })
-            const fakeMongoDocumentObject = { _id: '5e6d6fdf88535bf358020833' }
+            const expectedAmountofTimeDifference = 60000
 
-            const expectedAmoutofTimeDifference = 60000
+            jest.spyOn(mongodb, 'ObjectId').mockReturnValueOnce({ getTimestamp: () => new Date(now - expectedAmountofTimeDifference) })
+            const fakeMongoDocumentObject = { _id: '5e6d6fdf88535bf358020833' }
 
             const ageResult = calculateAgeOfMongoDocument(fakeMongoDocumentObject)
 
-            expect(ageResult).toEqual(expectedAmoutofTimeDifference)
+            expect(ageResult).toEqual(expectedAmountofTimeDifference)
         })
     })
 

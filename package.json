@@ -1,5 +1,5 @@
 {
-  "name": "StarterNode",
+  "name": "Barstool-Challenge-BE",
   "version": "1.0.0",
   "description": "Quick node starter app with basic needs",
   "main": "server.js",
@@ -13,7 +13,6 @@
     "pre-commit": "npm run lint && npm run test-cov && npm run end2end"
   },
   "author": "Luke Perry",
-  "license": "ISC",
   "engines": {
     "node": ">=10.0.0"
   },

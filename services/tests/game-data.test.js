@@ -28,7 +28,7 @@ describe('game-data-service', () => {
             expect(resultData).toEqual(mockCachedData)
         })
 
-        it('should retrive the game data and updated the cache if the cache data is old', async () => {
+        it('should retrieve the game data and updated the cache if the cache data is old', async () => {
             const mockUpdatedData = { data: 'stuff' }
 
             mockFindValueInDatastoreCollection = jest.spyOn(dataStoreAdapter, 'findValueInDatastoreCollection').mockResolvedValue({ data: 'old' })
@@ -45,7 +45,7 @@ describe('game-data-service', () => {
             expect(resultData).toEqual(mockUpdatedData)
         })
 
-        it('should retrive the game data and cache it if it has never been cached', async () => {
+        it('should retrieve the game data and cache it if it has never been cached', async () => {
             const mockInsertedData = { data: 'stuff' }
 
             mockFindValueInDatastoreCollection = jest.spyOn(dataStoreAdapter, 'findValueInDatastoreCollection').mockResolvedValue(null)

@@ -24,7 +24,7 @@ describe('sampleController', () => {
     })
 
     describe('#getGameFullData', () => {
-        it('should ', async () => {
+        it('should retrieve raw game data based on game id from request and return formatted data', async () => {
             await gameDataController.getGameFullData(sampleGoodReq, sampleRes)
 
             expect(mockGetCurrentGameData).toHaveBeenCalledWith(sampleGoodReq.params.gameId)
@@ -43,7 +43,7 @@ describe('sampleController', () => {
     })
 
     describe('#getGameDetails', () => {
-        it('should ', async () => {
+        it('should retrieve raw game details based on game id from request and return formatted data ', async () => {
             await gameDataController.getGameDetails(sampleGoodReq, sampleRes)
 
             expect(mockGetCurrentGameData).toHaveBeenCalledWith(sampleGoodReq.params.gameId)
@@ -62,7 +62,7 @@ describe('sampleController', () => {
     })
 
     describe('#getGameBoxScore', () => {
-        it('should ', async () => {
+        it('should retrieve raw game boxscore based on game id from request and return formatted data ', async () => {
             await gameDataController.getGameBoxScore(sampleGoodReq, sampleRes)
 
             expect(mockGetCurrentGameData).toHaveBeenCalledWith(sampleGoodReq.params.gameId)

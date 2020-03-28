@@ -19,7 +19,7 @@ const getCurrentGameData = async (gameId) => {
 
     if (gameDataAge > FIFTEEN_SECONDS) {
         await dataStoreAdapter.updateValueInDatastoreCollection(DATABASE_NAME, COLLECTION_NAME, { gameId }, { $set: { ...newestData, gameId } })
-    } else {
+    } else if (gameDataAge === null) {
         await dataStoreAdapter.insertValueIntoDatastoreCollection(DATABASE_NAME, COLLECTION_NAME, { ...newestData, gameId })
     }
 

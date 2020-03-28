@@ -10,7 +10,7 @@ const calculateAgeOfMongoDocument = (objectWithMongoId) => {
 
     const dataInsertedTime = new Date(mongodb.ObjectId(objectWithMongoId._id).getTimestamp())
 
-    return Math.abs(currentTime - dataInsertedTime)
+    return currentTime - dataInsertedTime
 }
 
 const extractDataForEndpoint = (gameData, type) => {

@@ -53,7 +53,7 @@ describe('data-store-adapter', () => {
             expect(mockClient.close).toHaveBeenCalled()
         })
 
-        it('should throw an error if the datastore connection calls fails', async () => {
+        it('should throw an error if the datastore close call fails', async () => {
             mockClient.close.mockImplementation(() => { throw new Error('error') })
 
             await expect(dataStore.disconnectFromDatastore(mockClient)).rejects.toThrow('error')
@@ -72,7 +72,7 @@ describe('data-store-adapter', () => {
         })
 
         describe('sad path', () => {
-            it('should disconnect from the datastore even if there is an error', async (done) => {
+            it('should disconnect from the datastore even if there is an error in insert', async (done) => {
                 mockClient.db = jest.fn().mockImplementation(() => { throw new Error() })
 
                 try {
@@ -115,7 +115,7 @@ describe('data-store-adapter', () => {
     })
 
     describe('#updateValueInDatastoreCollection', () => {
-        it('should write an object into the datastore specified collection', async () => {
+        it('should update an object into the datastore specified collection', async () => {
             const sampleQuery = { myData: 'fancy' }
             const sampleDataForUpdate = { myData: 'myNewfancy' }
 
@@ -127,7 +127,7 @@ describe('data-store-adapter', () => {
         })
 
         describe('sad path', () => {
-            it('should disconnect from the datastore even if there is an error', async (done) => {
+            it('should disconnect from the datastore even if there is an error in update', async (done) => {
                 mockClient.db = jest.fn().mockImplementation(() => { throw new Error() })
 
                 try {

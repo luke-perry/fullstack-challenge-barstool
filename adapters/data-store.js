@@ -38,6 +38,7 @@ const insertValueIntoDatastoreCollection = async (databaseName, collectionName, 
 
 const findValueInDatastoreCollection = async (databaseName, collectionName, query) => {
     const client = await connectToDatastore()
+
     try {
         const searchResult = await client.db(databaseName).collection(collectionName).findOne(query)
         await disconnectFromDatastore(client)
